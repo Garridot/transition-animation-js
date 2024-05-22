@@ -3,19 +3,52 @@
     padding: 0;
 }
 
-main{
+body{
+    background: black;
+}
+
+.cards--{
     max-width: 100%;
     height: 100vh;
-    background-image: url("/2__1.png");
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
+    position: relative;
 }
 
 main .card,main .card.vector{
-    background: black;
-    width: 0vw;
-    height: 0vw;
+    background: white;
+    width: 2vw;
+    height: 2vw;
     position: absolute;
-    opacity: 0;
-    transition: 1s;
+    transition: display 1s;
+}
+
+
+main .title-- {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.title-- h1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    font-family: fantasy;
+    font-size: xxx-large;
+    font-weight: 100;
+    color: darkred;
+    text-transform: uppercase;
+    animation: transform-scale 2s infinite alternate-reverse;
+}
+
+@keyframes transform-scale {
+    from{ transform: scale(1); }
+    to{ transform: scale(1.1); }
+    
 }
