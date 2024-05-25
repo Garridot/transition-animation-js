@@ -20,7 +20,7 @@ const titleAnime = () => {
     }
 }
 
-setTimeout(() => { titleAnime(); }, 10000);
+setTimeout(() => { titleAnime(); }, 5000);
 
 
 
@@ -72,7 +72,34 @@ const vectorTranslation = (t) => {
     return coordinates;
 }
 
+
+const displayCard = () => {
+    // Create an array of coordinate pairs
+    var coordinates = [];
+    for (let i = 0; i <= 100; i += 2) {
+        for (let j = 0; j <= 100; j += 2) {
+            coordinates.push([i, j]);
+        }
+    }
+
+    let chainEffect = 0;
+
+    // Randomly select a coordinate and hide the corresponding card
+    while (coordinates.length > 0) {
+        let randomIndex = Math.floor(Math.random() * coordinates.length);
+        let [x, y] = coordinates.splice(randomIndex, 1)[0]; // Remove the selected coordinate from the array
+        let card = document.getElementById(`c_${x}_${y}`);
+        setTimeout(() => {
+            if (card) {card.style.display = "none"; }
+        }, chainEffect * 1.1);
+        chainEffect ++;
+    }
+}
  
+setTimeout(() => {
+    displayCard();    
+}, 8000);
+
 const animationDownwards = (coordinates, delay) => {
     coordinates.forEach((coord, index) => {
         setTimeout(() => {
@@ -82,7 +109,7 @@ const animationDownwards = (coordinates, delay) => {
             if (card) {
                 card.style.display = "none";
             }
-        }, delay + index * 100); // Ajusta el tiempo de retardo entre cartas en la misma diagonal
+        }, delay + index * 10); // Ajusta el tiempo de retardo entre cartas en la misma diagonal
     });
 }
 
@@ -90,10 +117,6 @@ const animateDiagonals = () => {
     let maxDimension = 100; 
     for (let t = 1; t <= maxDimension; t++) {
         let coordinates = vectorTranslation(t);
-        animationDownwards(coordinates, t * 100);
+        animationDownwards(coordinates, t * 40);
     }
 }
-
-setTimeout(() => {  
-    animateDiagonals(); 
-},"10000")

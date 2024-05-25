@@ -19,7 +19,12 @@ main .card,main .card.vector{
     width: 2vw;
     height: 2vw;
     position: absolute;
-    transition: display 1s;
+    /* transition: display 1s;     */
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
 }
 
 
